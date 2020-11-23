@@ -1,5 +1,5 @@
 pytest
 numpy
-matplotlib
 scipy
-# TODO: add additional package
+matplotlib
+pathlib

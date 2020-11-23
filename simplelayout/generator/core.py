@@ -19,4 +19,12 @@ def generate_matrix(
     Returns:
         np.ndarray: 布局矩阵
     """
-    raise NotImplementedError  # TODO: 实现布局矩阵的生成
+
+    unit_len = board_grid // unit_grid
+    board_unit = np.zeros((unit_len * unit_len,))  # 压缩布局先用一维向量表示
+    positions = [x-1 for x in positions]  # 原来位置从1开始，转成从0开始
+    board_unit[positions] = 1
+    board_unit = board_unit.reshape(unit_len, unit_len)  # 把布局reshape成方形
+
+    unit = np.ones((unit_grid, unit_grid))  # 单个组件
+    return np.kron(board_unit, unit)
